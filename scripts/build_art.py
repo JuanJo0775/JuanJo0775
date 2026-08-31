@@ -57,7 +57,7 @@ if __name__ == "__main__":
     a.out.mkdir(parents=True, exist_ok=True)
 
     for suffix, (bg, fg) in THEMES.items():
-        p = a.out / f"glyphs{suffix}.png"
+        p = a.out / f"ascii{suffix}.png"
         im = glyphs(a.src / SOURCE, bg, fg)
         im.save(p, optimize=True)
         print(f"  {p.name:20} {im.size}  {p.stat().st_size // 1024} KB")

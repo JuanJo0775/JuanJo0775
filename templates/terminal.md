@@ -5,8 +5,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/map.png?v=2">
-  <img src="assets/map-light.png?v=2" width="100%" alt="">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/map.png">
+  <img src="assets/map-light.png" width="100%" alt="">
 </picture>
 
 </div>
@@ -59,8 +59,8 @@ $ tree ./stack
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/glyphs.png?v=2">
-  <img src="assets/glyphs-light.png?v=2" width="44%" alt="">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/ascii.png">
+  <img src="assets/ascii-light.png" width="44%" alt="">
 </picture>
 
 </div>
