@@ -54,8 +54,8 @@ $ tree ./stack
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/plate-b.png">
-  <img src="assets/plate-b-light.png" width="72%" alt="">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/window.png">
+  <img src="assets/window-light.png" width="72%" alt="">
 </picture>
 
 </div>
