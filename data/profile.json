@@ -14,11 +14,6 @@
       "tech": "Django · DRF · React · Vite · TypeScript"
     },
     {
-      "repo": "Ascii_generator",
-      "title": "ASCII Generator",
-      "tech": "JavaScript · Python"
-    },
-    {
       "repo": "flashnotes-backend",
       "pair": "flashnotes-frontend",
       "title": "FlashNotes",
@@ -28,6 +23,11 @@
       "repo": "MeloSport",
       "title": "MeloSport",
       "tech": "Django · JavaScript"
+    },
+    {
+      "repo": "Ascii_generator",
+      "title": "ASCII Generator",
+      "tech": "JavaScript · Python"
     },
     {
       "repo": "Sistema-rutas-del-campus",
