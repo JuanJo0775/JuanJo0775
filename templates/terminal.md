@@ -84,8 +84,8 @@ $ git log --stat --all
   <img src="https://github-readme-stats.shion.dev/api?username={{USER}}&show_icons=true&include_all_commits=true&rank_icon=github&hide_title=true&bg_color=FFFFFF&text_color=555555&icon_color=000000&border_color=D0D0D0&title_color=000000" height="170" alt="commits, pull requests, issues y estrellas">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user={{USER}}&background=0D1117&border=2A2A2A&stroke=2A2A2A&ring=FFFFFF&fire=FFFFFF&currStreakNum=FFFFFF&sideNums=A0A0A0&currStreakLabel=FFFFFF&sideLabels=A0A0A0&dates=6E6E6E">
-  <img src="https://streak-stats.demolab.com?user={{USER}}&background=FFFFFF&border=D0D0D0&stroke=D0D0D0&ring=000000&fire=000000&currStreakNum=000000&sideNums=555555&currStreakLabel=000000&sideLabels=555555&dates=888888" height="170" alt="racha de contribuciones">
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user={{USER}}&starting_year=2024&background=0D1117&border=2A2A2A&stroke=2A2A2A&ring=FFFFFF&fire=FFFFFF&currStreakNum=FFFFFF&sideNums=A0A0A0&currStreakLabel=FFFFFF&sideLabels=A0A0A0&dates=6E6E6E">
+  <img src="https://streak-stats.demolab.com?user={{USER}}&starting_year=2024&background=FFFFFF&border=D0D0D0&stroke=D0D0D0&ring=000000&fire=000000&currStreakNum=000000&sideNums=555555&currStreakLabel=000000&sideLabels=555555&dates=888888" height="170" alt="racha de contribuciones">
 </picture>
 
 
