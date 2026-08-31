@@ -59,8 +59,8 @@ $ tree ./stack
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/glyphs.png">
-  <img src="assets/glyphs-light.png" width="44%" alt="">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/glyphs.png?v=2">
+  <img src="assets/glyphs-light.png?v=2" width="44%" alt="">
 </picture>
 
 </div>
