@@ -5,8 +5,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/map.png">
-  <img src="assets/map-light.png" width="100%" alt="">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/map.png?v=2">
+  <img src="assets/map-light.png?v=2" width="100%" alt="">
 </picture>
 
 </div>
