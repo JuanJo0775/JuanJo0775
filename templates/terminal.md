@@ -2,20 +2,26 @@
      El contenido sale de data/profile.json y de la API de GitHub.
      Para cambiar el diseño: templates/terminal.md -->
 
-<div align="center">
+<!-- Cada imagen del encabezado va en su propio <div>: dentro de un mismo
+     bloque de HTML crudo, GitHub no las envuelve en parrafos y quedan
+     una al lado de la otra en vez de apiladas. -->
 
+<div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/terminal/banner.png">
   <img src="assets/terminal-light/banner.png" width="100%" alt="">
 </picture>
+</div>
 
+<div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/terminal/name.png">
-  <img src="assets/terminal-light/name.png" width="42%" alt="{{FULL_NAME}}">
+  <img src="assets/terminal-light/name.png" width="40%" alt="{{FULL_NAME}}">
 </picture>
+</div>
 
+<div align="center">
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=15&duration=3200&pause=900&color=8A8A8A&center=true&vCenter=true&width=560&lines=django+%2B+drf+%C2%B7+react+%2B+vite+%2B+typescript;pruebas%2C+docker+y+microservicios;{{REPO_COUNT}}+repos+desde+{{SINCE}}" alt="{{TAGLINE}}">
-
 </div>
 
 ```
