@@ -1,3 +1,7 @@
+<!-- GENERADO POR scripts/build_readme.py — no editar a mano.
+     La tabla de proyectos se lee de la API de GitHub.
+     Para cambiar el diseño, edita esta plantilla. -->
+
 <div align="center">
 
 <picture>
@@ -69,8 +73,7 @@ $ ls ./proyectos --sort=recent
   <td width="6%"><code>01</code></td>
   <td width="40%">
     <b>Sistema Inventario ICM</b><br>
-    <sub>Sistema de inventario y operaciones para Import Corporal Medical.
-    Contenerizado y con CI/CD.</sub>
+    <sub>Sistema de inventario y operaciones para Import Corporal Medical. Contenerizado y con CI/CD.</sub>
   </td>
   <td width="30%"><sub><code>Django · DRF · React · Vite · TypeScript</code></sub></td>
   <td width="24%" align="right">

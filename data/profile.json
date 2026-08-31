@@ -1,0 +1,35 @@
+{
+  "username": "JuanJo0775",
+
+  "_comment": "Curado a mano: cuales repos salen, en que orden, con que titulo y que etiquetas de tecnologia. La descripcion, el enlace y el demo NO van aca: se leen de la API de GitHub. Si quieres cambiar una descripcion, editala en el repo y el README se actualiza solo.",
+
+  "projects": [
+    {
+      "repo": "Sistema_Inventario_ICM_B",
+      "pair": "Sistema_Inventario_ICM_F",
+      "title": "Sistema Inventario ICM",
+      "tech": "Django · DRF · React · Vite · TypeScript"
+    },
+    {
+      "repo": "Ascii_generator",
+      "title": "ASCII Generator",
+      "tech": "JavaScript · Python"
+    },
+    {
+      "repo": "flashnotes-backend",
+      "pair": "flashnotes-frontend",
+      "title": "FlashNotes",
+      "tech": "Next.js · Node · TypeScript"
+    },
+    {
+      "repo": "MeloSport",
+      "title": "MeloSport",
+      "tech": "Django · JavaScript"
+    },
+    {
+      "repo": "Sistema-rutas-del-campus",
+      "title": "Sistema de rutas del campus",
+      "tech": "JavaScript · Java"
+    }
+  ]
+}
