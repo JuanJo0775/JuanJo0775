@@ -3,7 +3,7 @@
 El banner del mapa NO se genera aqui, a proposito. Su version original usa
 dithering, y de ahi le viene la textura fina de puntos irregulares; al
 redibujarlo con circulos uniformes se pierde justo eso. Los archivos
-assets/banner*.png se conservan tal como estan y no deben regenerarse.
+assets/map*.png se conservan tal como estan y no deben regenerarse.
 
     python scripts/build_art.py --src <carpeta-de-imagenes>
 
