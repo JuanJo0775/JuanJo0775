@@ -28,9 +28,6 @@ PIECES = {
     "banner": dict(
         file="WhatsApp Image 2026-08-31 at 3.31.39 PM.jpeg",
         cols=176, rows=23, px=12, py=22, r=4.6, thr=22, cut=110),
-    "window": dict(
-        file="WhatsApp Image 2026-08-31 at 3.23.40 PM.jpeg",
-        cols=84, rows=44, px=14, py=14, r=5.2, thr=88, cut=128),
 }
 
 # El ASCII no es una reticula de puntos sino texto: ahi el umbral simple
