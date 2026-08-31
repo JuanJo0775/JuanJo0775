@@ -15,8 +15,8 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/terminal/name.png">
-  <img src="assets/terminal-light/name.png" width="40%" alt="{{FULL_NAME}}">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/terminal/header.png">
+  <img src="assets/terminal-light/header.png" width="88%" alt="{{FULL_NAME}} — {{TAGLINE}}">
 </picture>
 </div>
 
@@ -41,7 +41,10 @@ $ tree ./stack
 ```
 
 <div align="center">
-  <img src="assets/terminal/sphere.gif" width="21%" alt="">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/terminal/plate-b.png">
+  <img src="assets/terminal-light/plate-b.png" width="54%" alt="">
+</picture>
 </div>
 
 ```
@@ -79,12 +82,7 @@ $ git log --stat --all
 <br>
 
 <div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/terminal/plate-a.png">
-  <img src="assets/terminal-light/plate-a.png" width="26%" alt="">
-</picture>
-
+  <img src="assets/terminal/sphere.gif" width="20%" alt="">
 </div>
 
 ```

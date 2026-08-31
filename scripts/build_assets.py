@@ -12,7 +12,7 @@ import argparse
 from pathlib import Path
 
 import cv2
-from PIL import Image, ImageDraw, ImageEnhance, ImageOps
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 
 # --- paletas -----------------------------------------------------------------
 # cada variante define (fondo, tinta). "terminal" ademas trae variante clara,
@@ -20,8 +20,6 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageOps
 PALETTES = {
     "terminal":       ((0x0D, 0x11, 0x17), (0xFF, 0xFF, 0xFF)),
     "terminal-light": ((0xFF, 0xFF, 0xFF), (0x0D, 0x11, 0x17)),
-    "zine":           ((0xF2, 0xEE, 0xE4), (0x1A, 0x1A, 0x1A)),
-    "crt":            ((0x05, 0x06, 0x08), (0x7D, 0xF9, 0xFF)),
 }
 
 SOURCES = {
@@ -104,6 +102,70 @@ def name_mask(word: str, px=12, gap=1, pad=3) -> Image.Image:
                                  (x0 + c) * px + px - 1, (pad + r) * px + px - 1],
                                 fill=1)
         x0 += len(FONT[ch][0]) + gap
+    return im
+
+
+def redraw_halftone(path: Path, cols=84, rows=44, thr=88, pitch=14, r=5.2,
+                    bg=(0x0D, 0x11, 0x17), fg=(0xFF, 0xFF, 0xFF)) -> Image.Image:
+    """Redibuja arte de reticula de puntos, en vez de ditherearlo.
+
+    La fuente ya es una malla regular de puntos, asi que ditherearla solo le
+    agrega ruido encima. Aca se mide la celda (paso ~4.86 px medido por
+    autocorrelacion), se promedia cada una y se vuelve a dibujar como circulo
+    limpio: el resultado tiene mas resolucion que el original.
+    """
+    g = ImageOps.autocontrast(Image.open(path).convert("L"), cutoff=1)
+    m = g.point(lambda v: 255 if v > 128 else 0)
+    m = m.crop(m.convert("1").getbbox())
+
+    grid = m.resize((cols, rows), Image.BOX)   # BOX = promedio por celda
+    px = grid.load()
+    pad = pitch
+    im = Image.new("RGB", (cols * pitch + pad * 2, rows * pitch + pad * 2), bg)
+    d = ImageDraw.Draw(im)
+    for y in range(rows):
+        for x in range(cols):
+            if px[x, y] > thr:
+                cx = pad + x * pitch + pitch / 2
+                cy = pad + y * pitch + pitch / 2
+                d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=fg)
+    return im
+
+
+def header_block(word: str, full_name: str, tagline: str, w: int = 1240,
+                 bg=(0x0D, 0x11, 0x17), fg=(0xFF, 0xFF, 0xFF),
+                 dim=(0x9A, 0xA3, 0xAD)) -> Image.Image:
+    """Reproduce el encabezado ASCII de la v1, pero como imagen.
+
+    Va como imagen y no como bloque de codigo porque GitHub aplica
+    line-height a los <pre>: eso mete una franja vacia entre renglones y
+    parte los caracteres de bloque, que es como se veia roto antes.
+    """
+    px = 11
+    mask = name_mask(word, px=px, pad=0)
+    fname = ImageFont.truetype(r"C:\Windows\Fonts\consolab.ttf", 30)
+    ftag = ImageFont.truetype(r"C:\Windows\Fonts\consola.ttf", 25)
+
+    spaced = " ".join(full_name.upper())
+    probe = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    while probe.textlength(spaced, font=fname) > w - 120 and fname.size > 12:
+        fname = ImageFont.truetype(r"C:\Windows\Fonts\consolab.ttf", fname.size - 1)
+
+    rule_w = int(probe.textlength(spaced, font=fname))
+    h = 60 + mask.height + 54 + fname.size + 26 + ftag.size + 60
+    im = Image.new("RGB", (w, h), bg)
+    d = ImageDraw.Draw(im)
+
+    x0 = (w - mask.width) // 2
+    im.paste(Image.new("RGB", mask.size, fg), (x0, 60), mask)
+
+    y = 60 + mask.height + 54
+    d.text(((w - rule_w) / 2, y), spaced, font=fname, fill=fg)
+    y += fname.size + 20
+    d.rectangle([(w - rule_w) / 2, y, (w + rule_w) / 2, y + 2], fill=dim)
+    y += 24
+    d.text(((w - probe.textlength(tagline, font=ftag)) / 2, y), tagline,
+           font=ftag, fill=dim)
     return im
 
 
