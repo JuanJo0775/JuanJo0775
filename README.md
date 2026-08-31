@@ -57,7 +57,7 @@ $ ls ./proyectos --sort=recent
     <b>Sistema Inventario ICM</b><br>
     <sub><i>sin descripción</i></sub>
   </td>
-  <td width="30%"><sub><code>Python · Dockerfile · Shell · TypeScript</code></sub></td>
+  <td width="30%"><sub><code>Python · TypeScript · CSS · JavaScript</code></sub></td>
   <td width="24%" align="right"><sub>
     <a href="https://github.com/JuanJo0775/Sistema_Inventario_ICM_B">backend</a> ·
     <a href="https://github.com/JuanJo0775/Sistema_Inventario_ICM_F">frontend</a> ·
@@ -81,7 +81,7 @@ $ ls ./proyectos --sort=recent
     <b>FlashNotes</b><br>
     <sub><i>sin descripción</i></sub>
   </td>
-  <td><sub><code>JavaScript · Bru · TypeScript · CSS</code></sub></td>
+  <td><sub><code>JavaScript · TypeScript · CSS</code></sub></td>
   <td align="right"><sub>
     <a href="https://github.com/JuanJo0775/flashnotes-backend">backend</a> ·
     <a href="https://github.com/JuanJo0775/flashnotes-frontend">frontend</a>

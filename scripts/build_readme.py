@@ -24,6 +24,14 @@ from pathlib import Path
 API = "https://api.github.com"
 ROOT = Path(__file__).resolve().parent.parent
 
+# La API de lenguajes cuenta por bytes y mete archivos de infraestructura al
+# mismo nivel que el lenguaje real del proyecto. Mostrar "Python · Dockerfile ·
+# Shell" no dice nada util, asi que estos no entran en la lista.
+NOT_A_LANGUAGE = {
+    "Dockerfile", "Shell", "Procfile", "Makefile", "Batchfile",
+    "CMake", "Bru", "Roff", "PowerShell",
+}
+
 
 def api(path: str) -> dict | list:
     req = urllib.request.Request(f"{API}{path}", headers={
@@ -53,7 +61,7 @@ def fetch_repo(user: str, repo: str) -> dict | None:
         "homepage": (d.get("homepage") or "").strip(),
         "stars": d.get("stargazers_count", 0),
         "pushed": d.get("pushed_at", "")[:10],
-        "langs": list(langs)[:3],
+        "langs": [l for l in langs if l not in NOT_A_LANGUAGE][:3],
     }
 
 
