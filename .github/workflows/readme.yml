@@ -38,11 +38,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/build_readme.py
 
-      # la grilla de contribuciones cambia todos los dias, asi que se
-      # redibuja en cada corrida con los datos frescos de la API
+      # el scramble no depende de datos: solo se regenera si cambian
+      # las frases en data/profile.json
       - name: Generar SVG animados
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/build_svg.py
 
       - name: Publicar si cambio

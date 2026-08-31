@@ -145,12 +145,6 @@ $ git log --stat --all
   <img src="https://streak-stats.demolab.com?user=JuanJo0775&background=FFFFFF&border=D0D0D0&stroke=D0D0D0&ring=000000&fire=000000&currStreakNum=000000&sideNums=555555&currStreakLabel=000000&sideLabels=555555&dates=888888" height="170" alt="racha de contribuciones">
 </picture>
 
-<br><br>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/contributions.svg">
-  <img src="assets/contributions-light.svg" width="86%" alt="contribuciones del último año">
-</picture>
 
 <br><br>
 

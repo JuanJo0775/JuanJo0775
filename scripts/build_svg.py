@@ -6,20 +6,21 @@ animaciones CSS puras dentro del propio SVG.
 
   tagline.svg        frases que se revelan letra por letra desde caracteres
                      aleatorios, en bucle
-  contributions.svg  el ano de contribuciones con datos reales de la API,
-                     con un decodificado de una sola pasada al cargar
 
-    python scripts/build_svg.py           # necesita GITHUB_TOKEN
+No se dibuja aqui una grilla de contribuciones: cualquier version propia
+tendria que animar una capa encima del dato real, y en un visor que no
+ejecute las animaciones esa capa se queda fija mostrando valores que no
+son los reales. La grilla nativa de GitHub, que sale bajo el README, no
+es personalizable, asi que se usa esa.
+
+    python scripts/build_svg.py
 
 Sin dependencias externas: corre en la Action con python puro.
 """
 from __future__ import annotations
 
 import json
-import os
 import random
-import sys
-import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,38 +34,6 @@ THEMES = {
     "":       ("#0D1117", "#E6EDF3", "#8A939D", "#FFFFFF"),
     "-light": ("#FFFFFF", "#1F2328", "#6E7781", "#0D1117"),
 }
-
-
-def gql(query: str, **vars) -> dict:
-    token = os.environ.get("GITHUB_TOKEN")
-    if not token:
-        sys.exit("falta GITHUB_TOKEN")
-    req = urllib.request.Request(
-        "https://api.github.com/graphql",
-        data=json.dumps({"query": query, "variables": vars}).encode(),
-        headers={"Authorization": f"Bearer {token}",
-                 "User-Agent": "perfil-svg-builder",
-                 "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        d = json.load(r)
-    if "errors" in d:
-        sys.exit(f"GraphQL: {d['errors']}")
-    return d["data"]
-
-
-def contributions(login: str) -> dict:
-    d = gql("""
-      query($login:String!){
-        user(login:$login){
-          contributionsCollection{
-            contributionCalendar{
-              totalContributions
-              weeks{ contributionDays{ date contributionCount weekday } }
-            }
-          }
-        }
-      }""", login=login)
-    return d["user"]["contributionsCollection"]["contributionCalendar"]
 
 
 def esc(s: str) -> str:
@@ -173,87 +142,13 @@ def tagline_svg(phrases: list[str], theme: str, width=620, size=15,
             f'{"".join(body)}</svg>')
 
 
-# --------------------------------------------------------------------------
-# 2. contribuciones: datos reales, decodificado de una pasada
-# --------------------------------------------------------------------------
-def contributions_svg(cal: dict, theme: str, seed=5) -> str:
-    """Grilla real del ano. El estado final es siempre el dato correcto:
-    encima se pinta una capa de ruido que se desvanece de izquierda a
-    derecha, asi que el 'decodificado' nunca miente sobre la informacion.
-    """
-    bg, ink, dim, accent = THEMES[theme]
-    rng = random.Random(seed)
-    weeks = cal["weeks"]
-    days = [d for w in weeks for d in w["contributionDays"]]
-    total = cal["totalContributions"]
-    active = sum(1 for d in days if d["contributionCount"])
-    peak = max(d["contributionCount"] for d in days)
-
-    cell, gap = 11, 3
-    pitch = cell + gap
-    pad_x, top = 14, 54
-    w = pad_x * 2 + len(weeks) * pitch
-    h = top + 7 * pitch + 26
-
-    # 5 niveles, como el grid de GitHub pero monocromo
-    def level(c: int) -> int:
-        if c == 0:
-            return 0
-        return min(4, 1 + int(c / max(1, peak) * 3.99))
-    op = [0.055, 0.30, 0.52, 0.76, 1.0]
-
-    css = [
-        f".t{{font:600 13px {MONO};fill:{ink}}}",
-        f".s{{font:11px {MONO};fill:{dim}}}",
-        # una sola pasada: al terminar se queda el dato real a la vista
-        "@keyframes dec{0%{opacity:1}70%{opacity:1}100%{opacity:0}}",
-        ".nz{animation:dec 1s ease-out forwards}",
-    ]
-    body = [
-        f'<text class="t" x="{pad_x}" y="22">{total} contribuciones '
-        f'en el último año</text>',
-        f'<text class="s" x="{pad_x}" y="40">{active} días activos '
-        f'· máximo {peak} en un día</text>',
-    ]
-
-    for wi, week in enumerate(weeks):
-        x = pad_x + wi * pitch
-        for d in week["contributionDays"]:
-            y = top + d["weekday"] * pitch
-            o = op[level(d["contributionCount"])]
-            body.append(
-                f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" '
-                f'fill="{accent}" opacity="{o}"/>')
-            # ruido encima, se va antes en las semanas de la izquierda
-            delay = 0.15 + wi / len(weeks) * 1.5 + rng.random() * 0.18
-            body.append(
-                f'<rect class="nz" x="{x}" y="{y}" width="{cell}" '
-                f'height="{cell}" rx="2" fill="{accent}" '
-                f'opacity="{rng.choice(op):.3f}" '
-                f'style="animation-delay:{delay:.2f}s"/>')
-
-    body.append(
-        f'<text class="s" x="{w - pad_x}" y="{h - 8}" text-anchor="end">'
-        f'{days[0]["date"]} → {days[-1]["date"]}</text>')
-
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
-            f'viewBox="0 0 {w} {h}" role="img" '
-            f'aria-label="{total} contribuciones en el último año">'
-            f'<style>{"".join(css)}</style>'
-            f'<rect width="100%" height="100%" fill="{bg}"/>'
-            f'{"".join(body)}</svg>')
-
-
 if __name__ == "__main__":
     profile = json.loads((ROOT / "data/profile.json").read_text(encoding="utf-8"))
     user = profile["username"]
     phrases = profile["tagline_lines"]
 
-    cal = contributions(user)
     OUT.mkdir(parents=True, exist_ok=True)
     for theme in THEMES:
-        for name, svg in (("tagline", tagline_svg(phrases, theme)),
-                          ("contributions", contributions_svg(cal, theme))):
-            p = OUT / f"{name}{theme}.svg"
-            p.write_text(svg, encoding="utf-8")
-            print(f"  {p.name}  {p.stat().st_size // 1024} KB")
+        p = OUT / f"tagline{theme}.svg"
+        p.write_text(tagline_svg(phrases, theme), encoding="utf-8")
+        print(f"  {p.name}  {p.stat().st_size // 1024} KB")
