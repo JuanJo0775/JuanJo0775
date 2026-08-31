@@ -162,8 +162,8 @@ $ git log --stat --all
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/plate-a.png">
-  <img src="assets/plate-a-light.png" width="30%" alt="">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/moon.png">
+  <img src="assets/moon-light.png" width="30%" alt="">
 </picture>
 
 </div>
