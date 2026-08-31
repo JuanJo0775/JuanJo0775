@@ -44,7 +44,12 @@ $ cat ./ahora.txt
 > activo en GitHub desde feb 2024
 ```
 
-<br>
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/glyphs.png">
+  <img src="assets/glyphs-light.png" width="34%" alt="">
+</picture>
+</div>
 
 ```
 $ tree ./stack

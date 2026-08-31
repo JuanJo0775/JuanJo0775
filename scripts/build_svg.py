@@ -86,13 +86,17 @@ def tagline_svg(phrases: list[str], theme: str, width=620, size=15,
     bg, ink, dim, _ = THEMES[theme]
     rng = random.Random(seed)
     adv = size * 0.6                       # avance monoespaciado
-    hold, gap = 2.8, 0.25                  # segundos visible / en blanco
-    slot = hold + gap
+
+    # linea de tiempo de cada frase, en segundos desde que entra
+    hold_end = 2.60                        # cuando empieza a borrarse
+    ex_span, ex_len = 0.35, 0.42           # escalonado y duracion del borrado
+    slot = hold_end + ex_span + ex_len + 0.23
     total = slot * len(phrases)
     height = int(size * 2.6)
     cy = height / 2
 
     buckets, lo, span = 10, 0.22, 0.95     # el fijado va de 0.22 s a 1.17 s
+    ex_steps = 3
     css = [
         # opacity:0 de base es imprescindible: un elemento con
         # animation-delay positivo se dibuja con su estilo base mientras
@@ -100,8 +104,12 @@ def tagline_svg(phrases: list[str], theme: str, width=620, size=15,
         f".c{{font:{size}px {MONO};fill:{ink};text-anchor:middle;"
         f"dominant-baseline:middle;opacity:0}}",
         f".n{{fill:{dim}}}",
+        # el ruido de salida dura siempre lo mismo, asi que le basta una regla
+        f"@keyframes nx{{0%,49.99%{{opacity:0}}"
+        f"50%,{50 + ex_len / ex_steps / total * 100:.3f}%{{opacity:1}}"
+        f"{50 + ex_len / ex_steps / total * 100 + 0.01:.3f}%,100%{{opacity:0}}}}",
     ]
-    # una regla de ruido por bucket: la rebanada visible es rb/steps
+    # el de entrada si depende del bucket: la rebanada visible es rb/steps
     for b in range(buckets):
         rb = lo + (b + 0.5) / buckets * span
         pct = rb / steps / total * 100
@@ -110,35 +118,45 @@ def tagline_svg(phrases: list[str], theme: str, width=620, size=15,
             f"50%,{50 + pct:.3f}%{{opacity:1}}"
             f"{50 + pct + 0.01:.3f}%,100%{{opacity:0}}}}")
 
+    def noise(x, cls, dur_key, at):
+        """La ventana visible del keyframe cae al 50% del ciclo; el delay la
+        corre hasta el instante que toca."""
+        return (f'<text class="c n" x="{x:.1f}" y="{cy:.1f}" '
+                f'style="animation:{dur_key} {total:.2f}s steps(1) infinite;'
+                f'animation-delay:{at - total / 2:.3f}s">'
+                f'{esc(rng.choice(GLYPHS))}</text>')
+
     body = []
     for p, text in enumerate(phrases):
         t0 = p * slot
         chars = list(text)
         x0 = width / 2 - (len(chars) - 1) * adv / 2
+        last = max(1, len(chars) - 1)
         seen = set()
         for i, ch in enumerate(chars):
             if ch == " ":
                 continue
             x = x0 + i * adv
-            # cada letra se fija un poco despues que la anterior
-            b = min(buckets - 1, int(i / max(1, len(chars) - 1) * buckets))
+            # entra de izquierda a derecha...
+            b = min(buckets - 1, int(i / last * buckets))
             rb = lo + (b + 0.5) / buckets * span
+            # ...y se borra de derecha a izquierda, para que no se sienta
+            # la misma animacion dos veces
+            ex = (1 - i / last) * ex_span
             slice_ = rb / steps
 
             for s in range(steps):
-                # la ventana visible del keyframe empieza al 50% del ciclo,
-                # asi que el delay coloca ese instante donde toca
-                delay = (t0 + slice_ * s) - total / 2
-                body.append(
-                    f'<text class="c n" x="{x:.1f}" y="{cy:.1f}" '
-                    f'style="animation:n{b} {total:.2f}s steps(1) infinite;'
-                    f'animation-delay:{delay:.3f}s">'
-                    f'{esc(rng.choice(GLYPHS))}</text>')
+                body.append(noise(x, "n", f"n{b}", t0 + slice_ * s))
+            for s in range(ex_steps):
+                body.append(noise(x, "n", "nx",
+                                  t0 + hold_end + ex + ex_len * s / ex_steps))
 
-            key = f"k{p}_{b}"
+            eb = round(ex, 3)
+            key = f"k{p}_{b}_{int(eb * 1000)}"
             if key not in seen:
                 seen.add(key)
-                a, z = (t0 + rb) / total * 100, (t0 + hold) / total * 100
+                a = (t0 + rb) / total * 100
+                z = (t0 + hold_end + eb) / total * 100
                 css.append(
                     f"@keyframes {key}{{0%,{a:.3f}%{{opacity:0}}"
                     f"{a + 0.01:.3f}%,{z:.3f}%{{opacity:1}}"
