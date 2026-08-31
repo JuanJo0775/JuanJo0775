@@ -1,8 +1,11 @@
 {
   "username": "JuanJo0775",
-
+  "tagline_lines": [
+    "django + drf · react + vite + typescript",
+    "pruebas, docker y microservicios",
+    "en práctica profesional · Colombia"
+  ],
   "_comment": "Curado a mano: cuales repos salen, en que orden, con que titulo y que etiquetas de tecnologia. La descripcion, el enlace y el demo NO van aca: se leen de la API de GitHub. Si quieres cambiar una descripcion, editala en el repo y el README se actualiza solo.",
-
   "projects": [
     {
       "repo": "Sistema_Inventario_ICM_B",

@@ -24,7 +24,10 @@
 ```
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=15&duration=3200&pause=900&color=8A8A8A&center=true&vCenter=true&width=560&lines=django+%2B+drf+%C2%B7+react+%2B+vite+%2B+typescript;pruebas%2C+docker+y+microservicios;66+repos+desde+febrero+de+2024" alt="">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/tagline.svg">
+  <img src="assets/tagline-light.svg" width="62%" alt="django + drf · react + vite + typescript">
+</picture>
 </div>
 
 ```
@@ -90,8 +93,8 @@ $ git log --stat --all
 <br><br>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://ghchart.rshah.org/ffffff/{{USER}}">
-  <img src="https://ghchart.rshah.org/1A1A1A/{{USER}}" width="92%" alt="contribuciones del último año">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/contributions.svg">
+  <img src="assets/contributions-light.svg" width="86%" alt="contribuciones del último año">
 </picture>
 
 <br><br>

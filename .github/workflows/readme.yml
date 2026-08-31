@@ -32,20 +32,27 @@ jobs:
         with:
           python-version: "3.12"
 
-      # build_readme.py usa solo la libreria estandar: nada que instalar
+      # ambos scripts usan solo la libreria estandar: nada que instalar
       - name: Generar README
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/build_readme.py
 
+      # la grilla de contribuciones cambia todos los dias, asi que se
+      # redibuja en cada corrida con los datos frescos de la API
+      - name: Generar SVG animados
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build_svg.py
+
       - name: Publicar si cambio
         run: |
-          if [ -z "$(git status --porcelain README.md)" ]; then
+          if [ -z "$(git status --porcelain README.md assets)" ]; then
             echo "Sin cambios."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "readme: actualizar datos de repos [skip ci]"
+          git add README.md assets
+          git commit -m "readme: actualizar contribuciones y datos de repos [skip ci]"
           git push
