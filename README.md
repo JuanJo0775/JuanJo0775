@@ -137,8 +137,8 @@ $ git log --stat --all
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.shion.dev/api?username=JuanJo0775&show_icons=true&include_all_commits=true&count_private=true&rank_icon=github&hide_title=true&bg_color=0D1117&text_color=A0A0A0&icon_color=FFFFFF&border_color=2A2A2A&title_color=FFFFFF">
-  <img src="https://github-readme-stats.shion.dev/api?username=JuanJo0775&show_icons=true&include_all_commits=true&count_private=true&rank_icon=github&hide_title=true&bg_color=FFFFFF&text_color=555555&icon_color=000000&border_color=D0D0D0&title_color=000000" height="170" alt="commits, pull requests, issues y estrellas">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.shion.dev/api?username=JuanJo0775&show_icons=true&include_all_commits=true&rank_icon=github&hide_title=true&bg_color=0D1117&text_color=A0A0A0&icon_color=FFFFFF&border_color=2A2A2A&title_color=FFFFFF">
+  <img src="https://github-readme-stats.shion.dev/api?username=JuanJo0775&show_icons=true&include_all_commits=true&rank_icon=github&hide_title=true&bg_color=FFFFFF&text_color=555555&icon_color=000000&border_color=D0D0D0&title_color=000000" height="170" alt="commits, pull requests, issues y estrellas">
 </picture>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=JuanJo0775&background=0D1117&border=2A2A2A&stroke=2A2A2A&ring=FFFFFF&fire=FFFFFF&currStreakNum=FFFFFF&sideNums=A0A0A0&currStreakLabel=FFFFFF&sideLabels=A0A0A0&dates=6E6E6E">
@@ -149,8 +149,8 @@ $ git log --stat --all
 <br><br>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.shion.dev/api/top-langs/?username=JuanJo0775&layout=compact&langs_count=8&include_all_commits=true&count_private=true&hide_title=true&bg_color=0D1117&text_color=A0A0A0&border_color=2A2A2A&title_color=FFFFFF">
-  <img src="https://github-readme-stats.shion.dev/api/top-langs/?username=JuanJo0775&layout=compact&langs_count=8&include_all_commits=true&count_private=true&hide_title=true&bg_color=FFFFFF&text_color=555555&border_color=D0D0D0&title_color=000000" height="180" alt="lenguajes más usados">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.shion.dev/api/top-langs/?username=JuanJo0775&layout=compact&langs_count=8&include_all_commits=true&hide_title=true&bg_color=0D1117&text_color=A0A0A0&border_color=2A2A2A&title_color=FFFFFF">
+  <img src="https://github-readme-stats.shion.dev/api/top-langs/?username=JuanJo0775&layout=compact&langs_count=8&include_all_commits=true&hide_title=true&bg_color=FFFFFF&text_color=555555&border_color=D0D0D0&title_color=000000" height="180" alt="lenguajes más usados">
 </picture>
 
 </div>
