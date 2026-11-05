@@ -1,9 +1,9 @@
 {
   "username": "JuanJo0775",
   "tagline_lines": [
-    "django + drf · react + vite + typescript",
-    "pruebas, docker y microservicios",
-    "en práctica profesional · Colombia"
+    "ingeniería de software · arquitectura y desarrollo",
+    "requisitos · backend · frontend · bases de datos · CI/CD",
+    "proyectos personales, académicos y colaborativos · Colombia"
   ],
   "_comment": "Curado a mano: cuales repos salen, en que orden, con que titulo y que etiquetas de tecnologia. La descripcion, el enlace y el demo NO van aca: se leen de la API de GitHub. Si quieres cambiar una descripcion, editala en el repo y el README se actualiza solo.",
   "projects": [
