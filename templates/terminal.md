@@ -39,8 +39,9 @@ $ whoami
 
 $ cat ./ahora.txt
 
-> ciclo de software: requisitos · diseño · arquitectura · desarrollo
-> calidad, automatización, CI/CD e integración de servicios
+> análisis y levantamiento de requisitos · diseño y arquitectura
+> desarrollo frontend y backend · bases de datos · integración de APIs
+> pruebas, QA y depuración · automatización · CI/CD · mejora continua
 > proyectos personales, académicos y colaborativos
 ```
 
