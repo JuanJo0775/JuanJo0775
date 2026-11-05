@@ -20,7 +20,7 @@
 
  J U A N   J O S É   N A R A N J O   B O C A N E G R A
  ──────────────────────────────────────────────────────
- desarrollador full-stack  ·  en práctica profesional
+ desarrollador de software  ·  ingeniería y desarrollo
 ```
 
 <div align="center">
@@ -34,14 +34,14 @@
 $ whoami
 
 > Juan José Naranjo Bocanegra
-> desarrollador full-stack · Colombia
-> en práctica profesional construyendo software de inventario
+> desarrollador de software · Colombia
+> diseño, arquitectura y desarrollo de soluciones de software
 
 $ cat ./ahora.txt
 
-> práctica profesional + proyectos propios
-> metido en: testing, docker y microservicios
-> activo en GitHub desde feb 2024
+> ciclo de software: requisitos · diseño · arquitectura · desarrollo
+> calidad, automatización, CI/CD e integración de servicios
+> proyectos personales, académicos y colaborativos
 ```
 
 ```
@@ -180,9 +180,7 @@ $ cat ./contacto
      Si usas Mastodon, pega abajo tu handle real y descomenta la línea:
 [![mastodon](https://img.shields.io/badge/mastodon-000000?style=for-the-badge&logo=mastodon&logoColor=white)](https://mastodon.social/@TU_HANDLE)
 -->
-<!-- LinkedIn (recomendado si estás en práctica):
-[![linkedin](https://img.shields.io/badge/linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/TU_PERFIL)
--->
+[![linkedin](https://img.shields.io/badge/linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juan-jose-naranjo-bocanegra-375673449/)
 
 </div>
 
