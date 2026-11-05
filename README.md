@@ -175,12 +175,12 @@ $ cat ./contacto
 [![correo](https://img.shields.io/badge/correo-000000?style=for-the-badge&logo=gmail&logoColor=white)](mailto:juanjo0731a@gmail.com)
 [![instagram](https://img.shields.io/badge/instagram-000000?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/juan_nar_)
 [![github](https://img.shields.io/badge/github-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JuanJo0775)
+[![linkedin](https://img.shields.io/badge/linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juan-jose-naranjo-bocanegra-375673449/)
 
 <!-- Mastodon: el link que traía GPRM estaba roto (tenía espacios en el handle).
      Si usas Mastodon, pega abajo tu handle real y descomenta la línea:
 [![mastodon](https://img.shields.io/badge/mastodon-000000?style=for-the-badge&logo=mastodon&logoColor=white)](https://mastodon.social/@TU_HANDLE)
 -->
-[![linkedin](https://img.shields.io/badge/linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juan-jose-naranjo-bocanegra-375673449/)
 
 </div>
 
